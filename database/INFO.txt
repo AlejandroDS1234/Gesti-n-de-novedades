@@ -1,0 +1,17 @@
+DATABASE
+
+Servicio PostgreSQL configurado en el docker-compose.yml de la raiz.
+
+- db-init/: carpeta para scripts SQL que PostgreSQL ejecuta al inicializar
+  una base de datos nueva. Actualmente no contiene scripts.
+- El volumen Docker db_data conserva los datos entre reinicios de los
+  contenedores.
+- PostgreSQL escucha en el puerto 5432 dentro de Docker y se publica como
+  localhost:5000 en el equipo anfitrion.
+- Las variables POSTGRES_USER, POSTGRES_PASSWORD y POSTGRES_DB se configuran
+  en el archivo .env de la raiz. Ese archivo esta vacio actualmente; define
+  esos valores antes de iniciar el servicio database.
+
+Para iniciar todos los servicios, despues de configurar .env, ejecutar desde
+la raiz: docker compose up --build -d
+

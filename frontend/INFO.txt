@@ -1,0 +1,21 @@
+FRONTEND
+
+Interfaz web desarrollada con React, TypeScript y Vite.
+
+- src/: codigo de la interfaz. App.tsx consulta GET /api/inicio y muestra el
+  mensaje recibido; main.tsx inicia la aplicacion.
+- package.json y package-lock.json: dependencias y scripts npm.
+- vite.config.ts: configura Vite en el puerto 3200 y reenvia solicitudes /api
+  al backend en http://backend:8200 dentro de Docker Compose.
+- Dockerfile: construye la imagen e inicia el servidor de desarrollo escuchando
+  en todas las interfaces del contenedor.
+- .dockerignore: excluye dependencias instaladas localmente y archivos
+  generados de la imagen.
+
+Con el servicio iniciado, abrir http://localhost:3200. Para iniciarlo junto
+con la API desde la carpeta raiz del proyecto, ejecutar:
+
+docker compose up --build -d frontend backend
+
+Scripts disponibles: npm run dev inicia el servidor de desarrollo, npm run
+build genera la version de produccion y npm run lint ejecuta ESLint.

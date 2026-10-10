@@ -1,0 +1,16 @@
+BACKEND
+
+API HTTP desarrollada con Flask para la aplicacion de gestion de novedades.
+
+- app.py: define GET /api/inicio; responde JSON con el mensaje
+  "Esto esta funcionando". El servidor escucha en 0.0.0.0:8200 para aceptar
+  conexiones desde el host y desde otros contenedores.
+- requirements.txt: dependencias Flask y Flask-CORS.
+- Dockerfile: construye la imagen e inicia app.py al arrancar el contenedor.
+- .dockerignore: excluye archivos locales y temporales de la imagen.
+- server/core/, server/routes/ y server/services/: carpetas previstas para
+  logica compartida, rutas y operaciones de negocio; actualmente estan vacias.
+
+La API se puede probar desde el navegador en http://localhost:8200/api/inicio
+cuando el servicio esta iniciado. Desde el frontend, las solicitudes /api se
+redirigen al servicio backend por el puerto 8200.

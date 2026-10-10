@@ -1,0 +1,39 @@
+RESUMEN DEL PROYECTO
+
+Aplicacion web para gestionar novedades, organizada en frontend, backend y
+base de datos. Algunas partes siguen en desarrollo.
+
+CARPETAS
+- frontend\: interfaz React con TypeScript y Vite. Se sirve en el puerto 3200
+  y envia las solicitudes /api al backend.
+- backend\: API Flask. El endpoint disponible es GET /api/inicio y escucha en
+  el puerto 8200.
+- database\: configuracion de PostgreSQL y scripts SQL de inicializacion en
+  db-init\. Los datos se guardan en el volumen Docker db_data.
+
+ARCHIVOS DE LA RAIZ
+- .env: variables requeridas por PostgreSQL en docker-compose.yml. Actualmente
+  esta vacio; hay que definir POSTGRES_USER, POSTGRES_PASSWORD y POSTGRES_DB
+  antes de iniciar el servicio database.
+- docker-compose.yml: configura los servicios frontend, backend y database.
+  Publica http://localhost:3200 para la web, el puerto 8200 para la API y
+  localhost:5000 para PostgreSQL (puerto interno 5432).
+- RESUMEN.txt: esta guia.
+
+INICIO
+- Para iniciar la web y la API: docker compose up --build -d frontend backend
+- Abrir la web en http://localhost:3200
+- Para iniciar tambien PostgreSQL, configurar primero las variables indicadas
+  en .env y ejecutar: docker compose up --build -d
+- Para detener los servicios: docker compose down
+
+DETALLE DE LOS PROYECTOS
+- backend\app.py y backend\requirements.txt: API Flask y sus dependencias.
+- backend\Dockerfile y frontend\Dockerfile: construccion y arranque de los
+  servicios respectivos.
+- frontend\package.json: dependencias y comandos npm del frontend.
+- frontend\vite.config.ts: puerto de desarrollo y proxy /api hacia backend:8200.
+- backend\INFO.txt, frontend\INFO.txt y database\INFO.txt: descripciones de
+  cada proyecto.
+- Los archivos .dockerignore excluyen elementos locales de las imagenes Docker.
+

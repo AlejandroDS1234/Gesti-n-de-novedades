@@ -1,0 +1,31 @@
+services:
+  backend:
+    build: ./backend
+    container_name: backend
+    volumes:
+      - ./backend:/backend
+    ports:
+      - "8200:8200"
+  frontend:
+    build: ./frontend
+    container_name: frontend
+    volumes:
+      - ./frontend:/frontend
+      - /frontend/node_modules
+    ports:
+      - "3200:3200"
+  database:
+    image: postgres:18
+    container_name: database
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    ports:
+      - "5000:5432"
+    volumes:
+      - ./database/db-init:/docker-entrypoint-initdb.d
+      - db_data:/var/lib/postgresql/data
+volumes:
+  db_data:
+  
