@@ -1,1 +1,671 @@
-@import "tailwindcss";
+@import "tailwindcss"; /* Carga Tailwind CSS para poder usar sus estilos y utilidades. */
+
+* {
+    box-sizing: border-box; /* Incluye padding y borde dentro del ancho y alto calculados. */
+}
+
+body {
+    zoom: 0.64; /* Reduce la escala visual de toda la página. */
+    overflow-x: hidden; /* Oculta el desbordamiento horizontal y evita una barra lateral. */
+}
+
+:root {
+    --azul: #50E5F9; 
+    --azul-oscuro: #00304D; 
+    --verde: #39A900; 
+    --verde-oscuro: #007832; 
+    --morado: #71277A; 
+    --amarillo: #FDC300;
+    --blanco: #F6F6F6;
+    --negro: #000000; 
+
+    --gris: #8291a0; 
+    --borde: #d9dee6; 
+}
+
+body {
+    font-family: 'Work Sans', 'Extralight'; 
+    color: var(--azul-oscuro);
+    background: var(--blanco);
+}
+
+button, input { /* Hace que botones e inputs usen la tipografía del elemento padre. */
+    font: inherit; /* Hereda familia, tamaño, grosor y estilo de fuente. */
+}
+
+/* Estilos del área para cargar una imagen y sus textos. */
+
+.campo-imagen:hover {
+    background: var(--blanco);
+    border-color: var(--azul-oscuro);
+}
+
+.campo-imagen span {
+    color: var(--verde);
+    font-size: 35px; /* Aumenta el tamaño del elemento destacado. */
+}
+
+.campo-imagen small {
+    color: var(--gris);
+}
+
+.previsualizacion {
+    text-align: center; /* Centra el contenido de la zona de previsualización. */
+}
+
+#vistaPrevia { /* Da forma y límites a la imagen seleccionada. */
+    display: block; /* Permite centrar la imagen mediante márgenes automáticos. */
+    max-width: 100%; /* Impide que la imagen exceda el ancho disponible. */
+    max-height: 600px; /* Limita la altura de la previsualización. */
+    margin: 18px auto 10px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px #07365320; /* Añade una sombra suave alrededor. */
+}
+
+#vistaPrevia[hidden],
+#quitarImagen[hidden] {
+    display: none; /* Oculta imagen y botón cuando tienen el atributo hidden. */
+}
+
+#quitarImagen { /* Estiliza el botón que elimina la imagen seleccionada. */
+    margin: 0 auto 10px;
+    padding: 9px 18px; /* Añade espacio interior vertical y horizontal. */
+    border: none;
+    border-radius: 8px;
+    background: var(--azul-oscuro);
+    color: var(--blanco);
+    cursor: pointer; /* Muestra el cursor de interacción. */
+}
+
+/* Distribución general de la página en dos columnas. */
+
+.pagina {
+    min-height: 100vh; /* Mantiene la página al menos tan alta como la ventana. */
+    display: grid; /* Activa CSS Grid para distribuir los paneles. */
+    grid-template-columns: 45.4% 54.6%; /* Asigna el ancho de cada columna. */
+}
+
+/* Fondo y área de contenido del panel izquierdo. */
+
+.panel-izquierdo {
+    min-height: 100vh; /* Hace que el panel cubra como mínimo toda la ventana. */
+    position: relative; /* Sirve de referencia para elementos posicionados dentro. */
+    overflow: hidden; /* Recorta los adornos que sobresalgan del panel. */
+    isolation: isolate; /* Crea un contexto de apilamiento local para las capas. */
+    padding: 5.8% 6.4%; /* Separa el contenido de los bordes del panel. */
+    background:
+        linear-gradient(
+            180deg, /* Hace que el degradado avance de arriba hacia abajo. */
+            rgba(242,247,252,.92),
+            rgba(231,243,251,.65) 35%,
+            rgba(5,45,71,.02) 65%
+        ),
+        url("img/cbi-palmira.jpg") center bottom / cover no-repeat; /* Centra abajo y escala la imagen para cubrir el panel sin repetirla. */
+}
+
+.encabezado {
+    display: flex; /* Coloca logo, separador y nombre en una fila. */
+    align-items: center; /* Alinea verticalmente los elementos del encabezado. */
+    gap: 24px; /* Define el espacio entre elementos. */
+    position: relative; /* Permite controlar su capa respecto a los adornos. */
+    z-index: 2; /* Mantiene el encabezado delante del fondo decorativo. */
+}
+
+.logo-superior {
+    width: 135px;
+    height: 125px;
+    object-fit: contain; /* Ajusta el logo sin deformar sus proporciones. */
+}
+
+.separador {
+    width: 1px;
+    height: 115px;
+    background: var(--azul-oscuro);
+}
+
+.nombre-centro h2 {
+    font-size: clamp(22px, 2.15vw, 32px); /* Ajusta el título al ancho de pantalla, con límites. */
+    margin-bottom: 5px;
+}
+
+.nombre-centro p {
+    font-size: clamp(12px, 1.15vw, 17px); /* Ajusta responsivamente el tamaño del párrafo. */
+    color: var(--azul-os);
+    line-height: 1.4; /* Controla la separación vertical entre líneas. */
+}
+
+.mensaje {
+    position: relative; /* Permite ubicar el mensaje delante de la decoración. */
+    z-index: 2; /* Coloca el mensaje sobre el fondo decorativo. */
+    margin-top: 55px;
+}
+
+.mensaje h1 {
+    font-size: clamp(35px, 3.25vw, 51px); /* Escala el título entre tamaños mínimo y máximo. */
+    line-height: 1.075; /* Ajusta la distancia vertical entre líneas del título. */
+    letter-spacing: -1.25px; /* Acerca ligeramente las letras. */
+    font-weight: 700; /* Muestra el título en negrita. */
+    color: var(--azul-oscuro);
+}
+
+.mensaje h1 span {
+    color: var(--verde);
+}
+
+.linea-verde {
+    width: 132px;
+    height: 5px;
+    margin-top: 20px;
+    background: var(--verde);
+    border-radius: 100%;
+    transform: rotate(-4deg); /* Inclina ligeramente la línea. */
+}
+
+.panel-izquierdo::after {
+    content: ""; /* Crea el elemento decorativo sin contenido de texto. */
+    position: absolute; /* Posiciona la curva respecto al panel izquierdo. */
+    z-index: 1; /* Sitúa la curva detrás del contenido principal. */
+    width: 150%;
+    height: 310px;
+    left: -25%; /* Centra la curva ancha y oculta sus extremos. */
+    bottom: -180px; /* Deja parte de la curva fuera del panel. */
+    background: var(--azul-oscuro);
+    border-top: 4px solid var(--verde);
+    border-radius: 52% 50% 0 0;
+    transform: rotate(-11deg); /* Inclina la curva decorativa. */
+}
+
+/* Fila de opciones con iconos situada en la parte inferior izquierda. */
+
+.pie-izquierdo {
+    position: absolute; /* Ancla la fila dentro del panel izquierdo. */
+    z-index: 3;
+    bottom: 32px; /* La separa 32 px del borde inferior. */
+    left: 6%; /* La separa del borde izquierdo. */
+    display: flex; /* Distribuye las opciones en una fila. */
+    align-items: center; /* Alinea las opciones verticalmente. */
+    color: var(--blanco);
+}
+
+.opcion {
+    min-width: 108px; /* Reserva un ancho mínimo para cada opción. */
+    padding: 0 15px; /* Separa cada opción de sus vecinas. */
+    display: flex; /* Usa Flexbox para organizar icono y texto. */
+    flex-direction: column; /* Coloca el texto debajo del icono. */
+    align-items: center; /* Centra icono y texto horizontalmente. */
+    gap: 7px; /* Deja espacio entre el icono y el texto. */
+    border-right: 1px solid rgba(255,255,255,.35);
+}
+
+.opcion:last-child {
+    border-right: none;
+}
+
+.opcion svg {
+    width: 31px;
+    height: 31px;
+    fill: none; /* Evita rellenar el interior de los iconos. */
+    stroke: var(--blanco);
+    stroke-width: 1.7; /* Define el grosor de los trazos. */
+    stroke-linecap: round; /* Redondea los extremos de los trazos. */
+    stroke-linejoin: round; /* Redondea las uniones de los trazos. */
+}
+
+.opcion span {
+    font-size: 12px; /* Define el tamaño de las etiquetas de las opciones. */
+    white-space: nowrap; /* Evita que una etiqueta se divida en varias líneas. */
+}
+
+/* Panel que contiene y centra el formulario de inicio de sesión. */
+
+.panel-derecho {
+    min-height: 100vh; /* Ocupa al menos toda la altura de la ventana. */
+    position: relative; /* Sirve de referencia para adornos posicionados. */
+    overflow: hidden; /* Recorta adornos que sobresalgan del panel. */
+    display: flex; /* Activa Flexbox para colocar la tarjeta. */
+    justify-content: center; /* Centra horizontalmente la tarjeta. */
+    align-items: center; /* Centra verticalmente la tarjeta. */
+    padding: 5.2% 5%; /* Mantiene espacio alrededor del contenido. */
+    background: var(--blanco);
+}
+
+.decoracion-superior {
+    position: absolute; /* Coloca el adorno respecto al panel derecho. */
+    width: 390px;
+    height: 390px;
+    top: -270px;
+    right: -105px; /* Desplaza parte del adorno fuera del borde derecho. */
+    border-radius: 50%;
+    background: var(--azul-oscuro);
+    border-left: 3px solid var(--verde);
+    transform: rotate(-38deg); /* Inclina el borde del adorno. */
+    pointer-events: none; /* Evita que el adorno intercepte clics. */
+}
+
+.decoracion-inferior {
+    position: absolute; /* Coloca el segundo adorno dentro del panel derecho. */
+    width: 250px;
+    height: 250px;
+    right: -165px; /* Deja parte del círculo fuera del panel. */
+    bottom: -120px; /* Deja parte del círculo fuera por abajo. */
+    border: 2px solid rgba(57,165,35,.6);
+    border-radius: 50%;
+    background: rgba(57,165,35,.06);
+    pointer-events: none; /* Permite hacer clic en el contenido que queda debajo. */
+}
+
+/* Tarjeta visual que agrupa el contenido del formulario. */
+
+.tarjeta-login {
+    position: relative; /* Permite controlar la capa de la tarjeta. */
+    z-index: 1; /* Mantiene la tarjeta delante de los adornos. */
+    width: 100%;
+    max-width: 700px; /* Evita que la tarjeta se vuelva demasiado ancha. */
+    padding: 43px 8% 34px; /* Añade espacio interior arriba, a los lados y abajo. */
+    border: 1px solid rgba(255,255,255,.95);
+    border-radius: 30px;
+    background: rgba(255,255,255,.78);
+    box-shadow: 0 20px 55px rgba(19,44,65,.09); /* Separa visualmente la tarjeta del fondo. */
+}
+
+/* Presentación y dimensiones del logo de la tarjeta. */
+
+.marca-login {
+    display: flex; /* Organiza el logo y su raya con Flexbox. */
+    flex-direction: column; /* Coloca la raya debajo del logo. */
+    align-items: center; /* Centra ambos elementos horizontalmente. */
+}
+
+.logo-login {
+    width: 145px;
+    height: 130px;
+    object-fit: contain; /* Conserva las proporciones de la imagen del logo. */
+}
+
+.raya-logo {
+    width: 100px;
+    height: 4px;
+    margin-top: 8px;
+    border-radius: 10px;
+    background: var(--verde);
+}
+
+/* Alineación, escala y espaciado del título del formulario. */
+
+.titulo-login {
+    text-align: center; /* Centra el título y su descripción. */
+    margin: 27px 0 36px;
+}
+
+.titulo-login h2 {
+    font-size: clamp(30px, 2.8vw, 43px); /* Ajusta el tamaño del encabezado al viewport. */
+    letter-spacing: -.5px; /* Acerca ligeramente las letras del encabezado. */
+    margin-bottom: 13px;
+}
+
+.titulo-login p {
+    color: var(--gris);
+    font-size: clamp(15px, 1.5vw, 20px); /* Escala la descripción según el ancho disponible. */
+    line-height: 1.5; /* Mejora la separación entre líneas del párrafo. */
+}
+
+/* Distribución y aspecto de los campos del formulario. */
+
+#formularioLogin {
+    display: flex; /* Organiza los controles del formulario con Flexbox. */
+    flex-direction: column; /* Apila los controles verticalmente. */
+    gap: 23px; /* Separa cada control del siguiente. */
+}
+
+.campo {
+    min-height: 70px; /* Mantiene una altura mínima cómoda para el campo. */
+    display: flex; /* Alinea icono e input dentro del campo. */
+    align-items: center; /* Centra verticalmente el contenido del campo. */
+    gap: 20px; /* Deja espacio entre el icono y el input. */
+    padding: 0 21px; /* Añade espacio interior a los lados. */
+    border: 1.5px solid var(--borde);
+    border-radius: 17px;
+    background: rgba(245,247,251,.82);
+    transition: border-color .2s, box-shadow .2s;
+}
+
+.campo:focus-within {
+    border-color: var(--azul-oscuro);
+    box-shadow: 0 0 0 4px rgba(59,138,179,.1); /* Añade un halo suave de foco. */
+}
+
+.campo > svg {
+    flex: 0 0 25px; /* Reserva 25 px fijos para el icono, sin crecer ni encogerse. */
+    width: 25px;
+    height: 25px;
+    fill: none; /* Evita rellenar el interior del icono SVG. */
+    stroke: var(--azul-oscuro);
+    stroke-width: 2; /* Define el grosor de las líneas del icono. */
+    stroke-linecap: round; /* Redondea los extremos de las líneas. */
+    stroke-linejoin: round; /* Redondea las uniones de las líneas. */
+}
+
+.campo input {
+    flex: 1; /* Ocupa el espacio restante junto al icono. */
+    width: 100%;
+    min-width: 0; /* Permite que el input se reduzca dentro de Flexbox. */
+    height: 60px;
+    padding: 0; /* Quita el relleno predeterminado del input. */
+    border: none;
+    outline: none; /* Evita el contorno nativo; el contenedor muestra el foco. */
+    background: transparent; /* Deja visible el fondo del contenedor. */
+    color: var(--azul-oscuro);
+    font-size: 18px; /* Define el tamaño del texto del input. */
+}
+
+.campo input::placeholder {
+    color: var(--gris);
+    opacity: 1; /* Evita que el navegador atenúe adicionalmente el placeholder. */
+}
+
+/* Tamaño, aspecto e interacción del botón para mostrar la contraseña. */
+
+.boton-ojo {
+    flex: 0 0 27px; /* Reserva 27 px fijos para el botón. */
+    width: 27px;
+    height: 27px;
+    padding: 1px; /* Añade un pequeño espacio interior. */
+    border: none;
+    color: var(--azul-oscuro);
+    background: transparent;
+    cursor: pointer; /* Indica que el botón se puede pulsar. */
+}
+
+.boton-ojo svg {
+    width: 100%;
+    height: 100%;
+    fill: none; /* Evita rellenar el interior del icono. */
+    stroke: currentColor;
+    stroke-width: 2; /* Define el grosor del trazo del icono. */
+    stroke-linecap: round; /* Redondea los extremos de los trazos. */
+    stroke-linejoin: round; /* Redondea las uniones de los trazos. */
+}
+
+/* Aspecto y estados del botón para enviar el formulario. */
+
+.boton-ingresar {
+    min-height: 70px; /* Da al botón una altura mínima cómoda. */
+    display: flex; /* Permite alinear el texto y el icono del botón. */
+    justify-content: center; /* Centra horizontalmente el contenido. */
+    align-items: center; /* Centra verticalmente el contenido. */
+    gap: 25px; /* Separa el texto del icono del botón. */
+    border: none;
+    border-radius: 17px;
+    color: var(--blanco);
+    background: var(--azul-oscuro);
+    font-size: 19px; /* Define el tamaño del texto del botón. */
+    font-weight: 600; /* Hace el texto seminegrita. */
+    cursor: pointer; /* Muestra el cursor de interacción. */
+    box-shadow: 0 7px 15px rgba(7,54,83,.12); /* Añade una sombra sutil. */
+    transition: background .2s, transform .2s;
+}
+
+.boton-ingresar:hover {
+    background: var(--verde-oscuro);
+    transform: translateY(-2px); /* Eleva levemente el botón al pasar el cursor. */
+}
+
+.boton-ingresar:active {
+    transform: translateY(0); /* Devuelve el botón a su posición al pulsarlo. */
+}
+
+.boton-ingresar svg {
+    width: 28px;
+    height: 24px;
+    fill: none; /* Evita rellenar el interior del icono. */
+    stroke: var(--blanco);
+    stroke-width: 1.8; /* Define el grosor del trazo. */
+    stroke-linecap: round; /* Redondea los extremos del trazo. */
+    stroke-linejoin: round; /* Redondea las uniones del trazo. */
+}
+
+button:focus-visible {
+    outline: 3px solid var(--azul-oscuro); /* Muestra un indicador visible al navegar con teclado. */
+    outline-offset: 3px; /* Separa el indicador del borde del botón. */
+}
+
+/* Apariencia de los mensajes informativos y de error. */
+
+.mensaje-estado {
+    display: none; /* Oculta el mensaje hasta que se active su estado visible. */
+    margin-top: -8px;
+    text-align: center; /* Centra el texto del mensaje. */
+    color: var(--gris);
+    font-size: 16px; /* Define el tamaño del mensaje. */
+    line-height: 1.5; /* Separa las líneas cuando el mensaje ocupa varias. */
+}
+
+.mensaje-estado.visible {
+    display: block; /* Muestra el mensaje cuando tiene la clase visible. */
+}
+
+.mensaje-estado.error {
+    color: #a52d2d;
+}
+
+/* Texto e icono que indican que el acceso está restringido. */
+
+.acceso-restringido {
+    display: flex; /* Alinea el icono y el texto en una fila. */
+    justify-content: center; /* Centra horizontalmente el conjunto. */
+    align-items: center; /* Alinea el icono con el texto verticalmente. */
+    gap: 12px; /* Separa el icono y el texto. */
+    margin-top: 27px;
+    color: var(--gris);
+    font-size: 14px; /* Define el tamaño del aviso. */
+}
+
+.acceso-restringido svg {
+    width: 19px;
+    height: 19px;
+    fill: var(--azul-oscuro);
+    stroke: var(--azul-oscuro);
+    stroke-width: 1.4; /* Define el grosor del contorno. */
+}
+
+/* Separador y textos del pie de la tarjeta. */
+
+.pie-tarjeta {
+    margin-top: 63px;
+    text-align: center; /* Centra los elementos del pie. */
+}
+
+.linea-final {
+    position: relative; /* Sirve de referencia para el pequeño acento superpuesto. */
+    height: 2px;
+    margin-bottom: 26px;
+    background: var(--borde);
+}
+
+.linea-final span {
+    position: absolute; /* Coloca el acento respecto a la línea separadora. */
+    top: -1px;
+    left: calc(50% - 27px); /* Centra el acento horizontalmente. */
+    width: 54px;
+    height: 4px;
+    border-radius: 10px;
+    background: var(--verde);
+}
+
+.pie-tarjeta h3 {
+    margin-bottom: 8px;
+    font-size: 15px; /* Define el tamaño del encabezado del pie. */
+}
+
+.pie-tarjeta h3 b {
+    padding: 0 5px; /* Da espacio lateral a las partes destacadas en negrita. */
+    color: var(--verde);
+}
+
+.pie-tarjeta p {
+    color: var(--gris);
+    font-size: 14px; /* Define el tamaño del texto final. */
+}
+
+/* Reorganiza dimensiones y espacios para ventanas de hasta 1100 px (tablet). */
+
+@media (max-width: 1100px) {
+    .pagina {
+        grid-template-columns: 42% 58%; /* Ajusta la proporción entre los dos paneles. */
+    }
+
+    .panel-izquierdo {
+        padding: 5%; /* Reduce el espacio interior del panel izquierdo. */
+    }
+
+    .encabezado {
+        gap: 14px; /* Reduce la separación entre elementos del encabezado. */
+    }
+
+    .logo-superior {
+        width: 90px;
+        height: 95px;
+    }
+
+    .separador {
+        height: 85px;
+    }
+
+    .mensaje {
+        margin-top: 40px;
+    }
+
+    .mensaje h1 {
+        font-size: clamp(34px, 3.7vw, 42px); /* Ajusta el título al espacio de tablet. */
+    }
+
+    .tarjeta-login {
+        padding: 35px 7% 28px; /* Reduce los márgenes internos de la tarjeta. */
+    }
+
+    .pie-tarjeta {
+        margin-top: 40px;
+    }
+
+    .opcion {
+        min-width: 88px; /* Reduce el ancho mínimo de las opciones inferiores. */
+        padding: 0 9px; /* Reduce el espacio lateral de cada opción. */
+    }
+}
+
+/* Cambia a una columna y compacta el contenido en pantallas de hasta 760 px (móvil). */
+
+@media (max-width: 760px) {
+    .pagina {
+        grid-template-columns: 1fr; /* Apila los paneles en una sola columna. */
+    }
+
+    .panel-izquierdo {
+        min-height: 335px; /* Conserva altura suficiente para el encabezado y mensaje. */
+        padding: 22px 6%; /* Ajusta el espacio interior a una pantalla estrecha. */
+    }
+
+    .logo-superior {
+        width: 76px;
+        height: 75px;
+    }
+
+    .separador {
+        height: 65px;
+    }
+
+    .nombre-centro h2 {
+        font-size: 20px; /* Evita que el título del centro ocupe demasiado espacio. */
+    }
+
+    .nombre-centro p {
+        max-width: 190px; /* Limita el ancho del texto descriptivo. */
+        font-size: 11px; /* Reduce el tamaño del texto descriptivo. */
+    }
+
+    .mensaje {
+        margin-top: 22px;
+    }
+
+    .mensaje h1 {
+        font-size: 29px; /* Reduce el tamaño del título principal. */
+    }
+
+    .linea-verde {
+        width: 95px;
+        margin-top: 12px;
+    }
+
+    .panel-izquierdo::after,
+    .pie-izquierdo {
+        display: none; /* Oculta la curva y las opciones inferiores para ahorrar espacio. */
+    }
+
+    .panel-derecho {
+        min-height: auto; /* Permite que el panel tenga la altura de su contenido. */
+        padding: 28px 16px; /* Añade márgenes adecuados para pantallas estrechas. */
+    }
+
+    .tarjeta-login {
+        max-width: 520px; /* Limita el ancho de la tarjeta en pantallas pequeñas. */
+        padding: 30px 22px 27px; /* Reduce el espacio interior de la tarjeta. */
+        border-radius: 24px;
+    }
+
+    .logo-login {
+        width: 105px;
+        height: 95px;
+    }
+
+    .titulo-login {
+        margin: 22px 0 27px;
+    }
+
+    .titulo-login h2 {
+        font-size: 30px; /* Fija un tamaño adecuado para el título en móvil. */
+    }
+
+    .titulo-login p {
+        font-size: 15px; /* Reduce el tamaño de la descripción en móvil. */
+    }
+
+    .campo {
+        min-height: 60px; /* Reduce la altura de los campos. */
+        gap: 13px; /* Acerca el icono al texto del input. */
+        padding: 0 14px; /* Reduce el espacio interior lateral. */
+    }
+
+    .campo input {
+        font-size: 16px; /* Ajusta el tamaño del texto de entrada para móvil. */
+    }
+
+    #formularioLogin {
+        gap: 17px; /* Reduce la separación entre controles del formulario. */
+    }
+
+    .boton-ingresar {
+        min-height: 60px; /* Reduce la altura del botón principal. */
+        font-size: 16px; /* Reduce el tamaño del texto del botón. */
+    }
+
+    .pie-tarjeta {
+        margin-top: 38px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) { /* Respeta la preferencia de reducir movimiento del sistema. */
+    *,
+    *::before,
+    *::after {
+        transition: none !important; /* Desactiva transiciones para usuarios sensibles al movimiento. */
+    }
+}
+/* Sobrescribe la imagen de fondo anterior del panel izquierdo con esta variante. */
+.panel-izquierdo {
+    background:
+        linear-gradient(
+            rgba(255, 255, 255, 0.05),
+            rgba(255, 255, 255, 0.05)
+        ),
+        url("sena-coso.png") center center / cover no-repeat; /* Centra y escala esta imagen para cubrir el panel sin repetirla. */
+}
