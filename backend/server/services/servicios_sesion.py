@@ -9,7 +9,9 @@ def guardar_sesion(identificacion: str):
 def obtener_usuario():
     identificacion = session.get("identificacion")
     return ejecutar_consulta(
-        f"SELECT * FROM usuarios WHERE identificacion = '{identificacion}'"
+        "SELECT * FROM usuarios WHERE identi_user = %s",
+        (identificacion,),
+        cantidad="one",
     )
 
 

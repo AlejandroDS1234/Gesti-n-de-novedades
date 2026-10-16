@@ -2,12 +2,12 @@
 -- PostgreSQL database dump
 --
 
-\restrict i53cXvrV7YSUneKvHkulEA9lLsoTmpUUagfnIStc5RC4panOFrjrBFfA6w9fybd
+\restrict GbGCbeAMdzIsLJMwWvTwBAVjQyun4FS0TWZMQMzoS5V2cuRNo74EqtbyebV4SjT
 
--- Dumped from database version 18.0
--- Dumped by pg_dump version 18.0
+-- Dumped from database version 18.4 (Debian 18.4-1.pgdg13+1)
+-- Dumped by pg_dump version 18.1
 
--- Started on 2026-10-15 19:12:36
+-- Started on 2026-10-15 23:58:10
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -26,7 +26,7 @@ SET default_tablespace = '';
 SET default_table_access_method = heap;
 
 --
--- TOC entry 223 (class 1259 OID 99274)
+-- TOC entry 219 (class 1259 OID 16385)
 -- Name: ambientes; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -39,7 +39,7 @@ CREATE TABLE public.ambientes (
 ALTER TABLE public.ambientes OWNER TO postgres;
 
 --
--- TOC entry 225 (class 1259 OID 99316)
+-- TOC entry 220 (class 1259 OID 16389)
 -- Name: aprendices; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -52,7 +52,7 @@ CREATE TABLE public.aprendices (
 ALTER TABLE public.aprendices OWNER TO postgres;
 
 --
--- TOC entry 227 (class 1259 OID 99345)
+-- TOC entry 221 (class 1259 OID 16394)
 -- Name: areas; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -65,7 +65,7 @@ CREATE TABLE public.areas (
 ALTER TABLE public.areas OWNER TO postgres;
 
 --
--- TOC entry 221 (class 1259 OID 99230)
+-- TOC entry 222 (class 1259 OID 16399)
 -- Name: ciudades; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -78,7 +78,7 @@ CREATE TABLE public.ciudades (
 ALTER TABLE public.ciudades OWNER TO postgres;
 
 --
--- TOC entry 229 (class 1259 OID 99369)
+-- TOC entry 223 (class 1259 OID 16404)
 -- Name: competencias; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -91,7 +91,7 @@ CREATE TABLE public.competencias (
 ALTER TABLE public.competencias OWNER TO postgres;
 
 --
--- TOC entry 228 (class 1259 OID 99352)
+-- TOC entry 224 (class 1259 OID 16409)
 -- Name: coordinadores; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -104,7 +104,7 @@ CREATE TABLE public.coordinadores (
 ALTER TABLE public.coordinadores OWNER TO postgres;
 
 --
--- TOC entry 224 (class 1259 OID 99309)
+-- TOC entry 225 (class 1259 OID 16414)
 -- Name: fichas; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -117,7 +117,7 @@ CREATE TABLE public.fichas (
 ALTER TABLE public.fichas OWNER TO postgres;
 
 --
--- TOC entry 226 (class 1259 OID 99333)
+-- TOC entry 226 (class 1259 OID 16419)
 -- Name: instructores; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -130,7 +130,7 @@ CREATE TABLE public.instructores (
 ALTER TABLE public.instructores OWNER TO postgres;
 
 --
--- TOC entry 230 (class 1259 OID 99556)
+-- TOC entry 227 (class 1259 OID 16424)
 -- Name: instructores_fichas; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -144,7 +144,7 @@ CREATE TABLE public.instructores_fichas (
 ALTER TABLE public.instructores_fichas OWNER TO postgres;
 
 --
--- TOC entry 232 (class 1259 OID 99599)
+-- TOC entry 228 (class 1259 OID 16430)
 -- Name: novedades; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -161,7 +161,7 @@ CREATE TABLE public.novedades (
 ALTER TABLE public.novedades OWNER TO postgres;
 
 --
--- TOC entry 219 (class 1259 OID 99186)
+-- TOC entry 229 (class 1259 OID 16441)
 -- Name: roles; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -174,7 +174,7 @@ CREATE TABLE public.roles (
 ALTER TABLE public.roles OWNER TO postgres;
 
 --
--- TOC entry 222 (class 1259 OID 99261)
+-- TOC entry 230 (class 1259 OID 16446)
 -- Name: sedes; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -189,7 +189,7 @@ CREATE TABLE public.sedes (
 ALTER TABLE public.sedes OWNER TO postgres;
 
 --
--- TOC entry 231 (class 1259 OID 99579)
+-- TOC entry 231 (class 1259 OID 16452)
 -- Name: tipo_novedad; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -202,7 +202,7 @@ CREATE TABLE public.tipo_novedad (
 ALTER TABLE public.tipo_novedad OWNER TO postgres;
 
 --
--- TOC entry 220 (class 1259 OID 99209)
+-- TOC entry 232 (class 1259 OID 16457)
 -- Name: usuarios; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -225,8 +225,8 @@ CREATE TABLE public.usuarios (
 ALTER TABLE public.usuarios OWNER TO postgres;
 
 --
--- TOC entry 5052 (class 0 OID 99274)
--- Dependencies: 223
+-- TOC entry 3528 (class 0 OID 16385)
+-- Dependencies: 219
 -- Data for Name: ambientes; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -235,8 +235,8 @@ COPY public.ambientes (id_ambiente, id_sede) FROM stdin;
 
 
 --
--- TOC entry 5054 (class 0 OID 99316)
--- Dependencies: 225
+-- TOC entry 3529 (class 0 OID 16389)
+-- Dependencies: 220
 -- Data for Name: aprendices; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -245,8 +245,8 @@ COPY public.aprendices (identi_user, id_ficha) FROM stdin;
 
 
 --
--- TOC entry 5056 (class 0 OID 99345)
--- Dependencies: 227
+-- TOC entry 3530 (class 0 OID 16394)
+-- Dependencies: 221
 -- Data for Name: areas; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -255,8 +255,8 @@ COPY public.areas (id_area, nom_area) FROM stdin;
 
 
 --
--- TOC entry 5050 (class 0 OID 99230)
--- Dependencies: 221
+-- TOC entry 3531 (class 0 OID 16399)
+-- Dependencies: 222
 -- Data for Name: ciudades; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -265,8 +265,8 @@ COPY public.ciudades (id_ciudad, nombre_ciudad) FROM stdin;
 
 
 --
--- TOC entry 5058 (class 0 OID 99369)
--- Dependencies: 229
+-- TOC entry 3532 (class 0 OID 16404)
+-- Dependencies: 223
 -- Data for Name: competencias; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -275,8 +275,8 @@ COPY public.competencias (id_competencia, nom_competencia) FROM stdin;
 
 
 --
--- TOC entry 5057 (class 0 OID 99352)
--- Dependencies: 228
+-- TOC entry 3533 (class 0 OID 16409)
+-- Dependencies: 224
 -- Data for Name: coordinadores; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -285,8 +285,8 @@ COPY public.coordinadores (identi_user, id_area) FROM stdin;
 
 
 --
--- TOC entry 5053 (class 0 OID 99309)
--- Dependencies: 224
+-- TOC entry 3534 (class 0 OID 16414)
+-- Dependencies: 225
 -- Data for Name: fichas; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -295,7 +295,7 @@ COPY public.fichas (id_ficha, nom_programa) FROM stdin;
 
 
 --
--- TOC entry 5055 (class 0 OID 99333)
+-- TOC entry 3535 (class 0 OID 16419)
 -- Dependencies: 226
 -- Data for Name: instructores; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -305,8 +305,8 @@ COPY public.instructores (identi_user, tipo_vinculacion) FROM stdin;
 
 
 --
--- TOC entry 5059 (class 0 OID 99556)
--- Dependencies: 230
+-- TOC entry 3536 (class 0 OID 16424)
+-- Dependencies: 227
 -- Data for Name: instructores_fichas; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -315,8 +315,8 @@ COPY public.instructores_fichas (identi_user, id_ficha, id_competencia) FROM std
 
 
 --
--- TOC entry 5061 (class 0 OID 99599)
--- Dependencies: 232
+-- TOC entry 3537 (class 0 OID 16430)
+-- Dependencies: 228
 -- Data for Name: novedades; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -325,18 +325,19 @@ COPY public.novedades (id_novedad, id_tipo_novedad, usuarios, descripcion, fecha
 
 
 --
--- TOC entry 5048 (class 0 OID 99186)
--- Dependencies: 219
+-- TOC entry 3538 (class 0 OID 16441)
+-- Dependencies: 229
 -- Data for Name: roles; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.roles (id_rol, nombre_rol) FROM stdin;
+1	Aprendiz
 \.
 
 
 --
--- TOC entry 5051 (class 0 OID 99261)
--- Dependencies: 222
+-- TOC entry 3539 (class 0 OID 16446)
+-- Dependencies: 230
 -- Data for Name: sedes; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -345,7 +346,7 @@ COPY public.sedes (id_sede, nombre_sede, direccion, id_ciudad) FROM stdin;
 
 
 --
--- TOC entry 5060 (class 0 OID 99579)
+-- TOC entry 3540 (class 0 OID 16452)
 -- Dependencies: 231
 -- Data for Name: tipo_novedad; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -355,17 +356,18 @@ COPY public.tipo_novedad (id_tipo_novedad, nom_novedad) FROM stdin;
 
 
 --
--- TOC entry 5049 (class 0 OID 99209)
--- Dependencies: 220
+-- TOC entry 3541 (class 0 OID 16457)
+-- Dependencies: 232
 -- Data for Name: usuarios; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.usuarios (identi_user, tipo_id_user, nombre1_user, nombre2_user, apellido1_user, apellido2_user, fecha_naci_user, genero_user, correo_user, contrasena_user, estado_user, id_rol) FROM stdin;
+1114545747	T.I.	Alejandro	\N	Ducuara	Satizabal	2010-10-06	M	ducuarasatizabalalejandro@gmail.com	scrypt:32768:8:1$Jm4JkrsyDi9p5P86$4ca57fed1054a29ffe227919e9da8ae9587020b9d2a1244aaae7ce41939a4288dcaa41e7c4014aed0d5e071d033a9d7c1bf7cb36bbd7497a78ab4aec5a456e3f	t	1
 \.
 
 
 --
--- TOC entry 4869 (class 2606 OID 99279)
+-- TOC entry 3341 (class 2606 OID 16472)
 -- Name: ambientes ambientes_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -374,7 +376,7 @@ ALTER TABLE ONLY public.ambientes
 
 
 --
--- TOC entry 4877 (class 2606 OID 99351)
+-- TOC entry 3345 (class 2606 OID 16474)
 -- Name: areas areas_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -383,7 +385,7 @@ ALTER TABLE ONLY public.areas
 
 
 --
--- TOC entry 4865 (class 2606 OID 99236)
+-- TOC entry 3347 (class 2606 OID 16476)
 -- Name: ciudades ciudades_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -392,7 +394,7 @@ ALTER TABLE ONLY public.ciudades
 
 
 --
--- TOC entry 4881 (class 2606 OID 99375)
+-- TOC entry 3349 (class 2606 OID 16478)
 -- Name: competencias competencia_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -401,7 +403,7 @@ ALTER TABLE ONLY public.competencias
 
 
 --
--- TOC entry 4871 (class 2606 OID 99315)
+-- TOC entry 3353 (class 2606 OID 16480)
 -- Name: fichas fichas_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -410,7 +412,7 @@ ALTER TABLE ONLY public.fichas
 
 
 --
--- TOC entry 4887 (class 2606 OID 99611)
+-- TOC entry 3359 (class 2606 OID 16482)
 -- Name: novedades novedades_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -419,7 +421,7 @@ ALTER TABLE ONLY public.novedades
 
 
 --
--- TOC entry 4873 (class 2606 OID 99322)
+-- TOC entry 3343 (class 2606 OID 16484)
 -- Name: aprendices pk_aprendices; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -428,7 +430,7 @@ ALTER TABLE ONLY public.aprendices
 
 
 --
--- TOC entry 4879 (class 2606 OID 99358)
+-- TOC entry 3351 (class 2606 OID 16486)
 -- Name: coordinadores pk_coordinadores; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -437,7 +439,7 @@ ALTER TABLE ONLY public.coordinadores
 
 
 --
--- TOC entry 4875 (class 2606 OID 99339)
+-- TOC entry 3355 (class 2606 OID 16488)
 -- Name: instructores pk_instructores; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -446,7 +448,7 @@ ALTER TABLE ONLY public.instructores
 
 
 --
--- TOC entry 4883 (class 2606 OID 99563)
+-- TOC entry 3357 (class 2606 OID 16490)
 -- Name: instructores_fichas pk_instructores_fichas; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -455,7 +457,7 @@ ALTER TABLE ONLY public.instructores_fichas
 
 
 --
--- TOC entry 4861 (class 2606 OID 99192)
+-- TOC entry 3361 (class 2606 OID 16492)
 -- Name: roles rol_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -464,7 +466,7 @@ ALTER TABLE ONLY public.roles
 
 
 --
--- TOC entry 4867 (class 2606 OID 99268)
+-- TOC entry 3363 (class 2606 OID 16494)
 -- Name: sedes sedes_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -473,7 +475,7 @@ ALTER TABLE ONLY public.sedes
 
 
 --
--- TOC entry 4885 (class 2606 OID 99585)
+-- TOC entry 3365 (class 2606 OID 16496)
 -- Name: tipo_novedad tipo_novedad_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -482,7 +484,7 @@ ALTER TABLE ONLY public.tipo_novedad
 
 
 --
--- TOC entry 4863 (class 2606 OID 99224)
+-- TOC entry 3367 (class 2606 OID 16498)
 -- Name: usuarios usuarios_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -491,7 +493,7 @@ ALTER TABLE ONLY public.usuarios
 
 
 --
--- TOC entry 4890 (class 2606 OID 99280)
+-- TOC entry 3368 (class 2606 OID 16499)
 -- Name: ambientes ambientes_id_sede_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -500,7 +502,7 @@ ALTER TABLE ONLY public.ambientes
 
 
 --
--- TOC entry 4891 (class 2606 OID 99328)
+-- TOC entry 3369 (class 2606 OID 16504)
 -- Name: aprendices fk_aprendices_fichas; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -509,7 +511,7 @@ ALTER TABLE ONLY public.aprendices
 
 
 --
--- TOC entry 4892 (class 2606 OID 99323)
+-- TOC entry 3370 (class 2606 OID 16509)
 -- Name: aprendices fk_aprendices_usuarios; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -518,7 +520,7 @@ ALTER TABLE ONLY public.aprendices
 
 
 --
--- TOC entry 4894 (class 2606 OID 99364)
+-- TOC entry 3371 (class 2606 OID 16514)
 -- Name: coordinadores fk_coordinadores_areas; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -527,7 +529,7 @@ ALTER TABLE ONLY public.coordinadores
 
 
 --
--- TOC entry 4895 (class 2606 OID 99359)
+-- TOC entry 3372 (class 2606 OID 16519)
 -- Name: coordinadores fk_coordinadores_usuarios; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -536,7 +538,7 @@ ALTER TABLE ONLY public.coordinadores
 
 
 --
--- TOC entry 4896 (class 2606 OID 99574)
+-- TOC entry 3374 (class 2606 OID 16524)
 -- Name: instructores_fichas fk_id_competencias; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -545,7 +547,7 @@ ALTER TABLE ONLY public.instructores_fichas
 
 
 --
--- TOC entry 4897 (class 2606 OID 99569)
+-- TOC entry 3375 (class 2606 OID 16529)
 -- Name: instructores_fichas fk_id_fichas; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -554,7 +556,7 @@ ALTER TABLE ONLY public.instructores_fichas
 
 
 --
--- TOC entry 4898 (class 2606 OID 99564)
+-- TOC entry 3376 (class 2606 OID 16534)
 -- Name: instructores_fichas fk_id_instructores; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -563,7 +565,7 @@ ALTER TABLE ONLY public.instructores_fichas
 
 
 --
--- TOC entry 4893 (class 2606 OID 99340)
+-- TOC entry 3373 (class 2606 OID 16539)
 -- Name: instructores fk_instructores_usuarios; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -572,7 +574,7 @@ ALTER TABLE ONLY public.instructores
 
 
 --
--- TOC entry 4899 (class 2606 OID 99612)
+-- TOC entry 3377 (class 2606 OID 16544)
 -- Name: novedades fk_novedades_tipo; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -581,7 +583,7 @@ ALTER TABLE ONLY public.novedades
 
 
 --
--- TOC entry 4900 (class 2606 OID 99617)
+-- TOC entry 3378 (class 2606 OID 16549)
 -- Name: novedades fk_novedades_usuarios; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -590,7 +592,7 @@ ALTER TABLE ONLY public.novedades
 
 
 --
--- TOC entry 4889 (class 2606 OID 99269)
+-- TOC entry 3379 (class 2606 OID 16554)
 -- Name: sedes sedes_id_ciudad_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -599,7 +601,7 @@ ALTER TABLE ONLY public.sedes
 
 
 --
--- TOC entry 4888 (class 2606 OID 99225)
+-- TOC entry 3380 (class 2606 OID 16559)
 -- Name: usuarios usuarios_id_rol_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -607,11 +609,11 @@ ALTER TABLE ONLY public.usuarios
     ADD CONSTRAINT usuarios_id_rol_fkey FOREIGN KEY (id_rol) REFERENCES public.roles(id_rol);
 
 
--- Completed on 2026-10-15 19:12:36
+-- Completed on 2026-10-15 23:58:10
 
 --
 -- PostgreSQL database dump complete
 --
 
-\unrestrict i53cXvrV7YSUneKvHkulEA9lLsoTmpUUagfnIStc5RC4panOFrjrBFfA6w9fybd
+\unrestrict GbGCbeAMdzIsLJMwWvTwBAVjQyun4FS0TWZMQMzoS5V2cuRNo74EqtbyebV4SjT
 

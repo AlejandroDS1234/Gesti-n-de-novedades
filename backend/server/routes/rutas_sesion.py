@@ -9,8 +9,8 @@ from server.core.decoradores import necesita
 sesion_bp = Blueprint("session", __name__)
 
 
-@sesion_bp.route("/api/sesion/", methods=["POST"])
-@necesita("identificacion", esta_sesion_guardada)
+@sesion_bp.route("/api/sesion", methods=["POST", "GET"])
+@necesita("autenticarse", esta_sesion_guardada, redireccion="/login")
 def sesion():
     datos_solicitados = request.get_json(silent=True) or ["identi_user"]
     usuario = obtener_usuario()

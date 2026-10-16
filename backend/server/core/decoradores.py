@@ -9,7 +9,7 @@ def necesita(nombre: str, validacion: bool, redireccion: str = "/"):
             if not validacion():
                 return error_response(
                     message=f"Necesitas {nombre} para acceder",
-                    redirect=redireccion,
+                    redirigir=redireccion,
                 )
             return func(*args, **kwargs)
 
