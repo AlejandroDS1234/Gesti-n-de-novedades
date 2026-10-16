@@ -3,6 +3,7 @@ from server.core.respuestas import success_response, error_response
 from server.services.servicios_sesion import (
     esta_sesion_guardada,
     obtener_usuario,
+    cerrar_sesion,
 )
 from server.core.decoradores import necesita
 
@@ -35,3 +36,14 @@ def sesion():
         return error_response("Solicitud inválida", 400)
     usuario_filtrado = {dt: usuario[dt] for dt in datos_solicitados}
     return success_response(usuario_filtrado, 200)
+
+
+@sesion_bp.route("/api/cerrar_sesion", methods=["POST"])
+@necesita("autenticarse", esta_sesion_guardada, redireccion="/login")
+def cerrar_sesion_route():
+    cerrar_sesion()
+    return success_response(
+        message="Sesión cerrada correctamente",
+        status_code=200,
+        redirigir="/login",
+    )

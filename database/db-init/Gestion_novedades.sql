@@ -2,12 +2,12 @@
 -- PostgreSQL database dump
 --
 
-\restrict GbGCbeAMdzIsLJMwWvTwBAVjQyun4FS0TWZMQMzoS5V2cuRNo74EqtbyebV4SjT
+\restrict Dj7BT85a9MSb3ESkhFz1IZtObKm1NJRq3NysfzLrhdONeYob3wMTuaW6meGpcbQ
 
 -- Dumped from database version 18.4 (Debian 18.4-1.pgdg13+1)
 -- Dumped by pg_dump version 18.1
 
--- Started on 2026-10-15 23:58:10
+-- Started on 2026-10-16 00:52:27
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -332,6 +332,8 @@ COPY public.novedades (id_novedad, id_tipo_novedad, usuarios, descripcion, fecha
 
 COPY public.roles (id_rol, nombre_rol) FROM stdin;
 1	Aprendiz
+2	Instructor
+3	Coordinador
 \.
 
 
@@ -362,7 +364,7 @@ COPY public.tipo_novedad (id_tipo_novedad, nom_novedad) FROM stdin;
 --
 
 COPY public.usuarios (identi_user, tipo_id_user, nombre1_user, nombre2_user, apellido1_user, apellido2_user, fecha_naci_user, genero_user, correo_user, contrasena_user, estado_user, id_rol) FROM stdin;
-1114545747	T.I.	Alejandro	\N	Ducuara	Satizabal	2010-10-06	M	ducuarasatizabalalejandro@gmail.com	scrypt:32768:8:1$Jm4JkrsyDi9p5P86$4ca57fed1054a29ffe227919e9da8ae9587020b9d2a1244aaae7ce41939a4288dcaa41e7c4014aed0d5e071d033a9d7c1bf7cb36bbd7497a78ab4aec5a456e3f	t	1
+1114545747	T.I.	Alejandro	\N	Ducuara	Satizabal	2010-10-06	M	ducuarasatizabalalejandro@gmail.com	scrypt:32768:8:1$Jm4JkrsyDi9p5P86$4ca57fed1054a29ffe227919e9da8ae9587020b9d2a1244aaae7ce41939a4288dcaa41e7c4014aed0d5e071d033a9d7c1bf7cb36bbd7497a78ab4aec5a456e3f	t	2
 \.
 
 
@@ -609,11 +611,11 @@ ALTER TABLE ONLY public.usuarios
     ADD CONSTRAINT usuarios_id_rol_fkey FOREIGN KEY (id_rol) REFERENCES public.roles(id_rol);
 
 
--- Completed on 2026-10-15 23:58:10
+-- Completed on 2026-10-16 00:52:27
 
 --
 -- PostgreSQL database dump complete
 --
 
-\unrestrict GbGCbeAMdzIsLJMwWvTwBAVjQyun4FS0TWZMQMzoS5V2cuRNo74EqtbyebV4SjT
+\unrestrict Dj7BT85a9MSb3ESkhFz1IZtObKm1NJRq3NysfzLrhdONeYob3wMTuaW6meGpcbQ
 

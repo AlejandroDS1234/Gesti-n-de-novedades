@@ -1,6 +1,7 @@
 import { useState, type FormEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
+import type { respuestaBackend } from "../types/types";
 import "../index.css";
 
 function LoginQuery(datos: { usuario: string; contrasena: string }) {
@@ -10,7 +11,7 @@ function LoginQuery(datos: { usuario: string; contrasena: string }) {
     headers: {
       "Content-Type": "application/json",
     },
-  }).then((res) => res.json());
+  }).then((res) => res.json() as Promise<respuestaBackend>);
 }
 
 function Login() {
@@ -25,7 +26,7 @@ function Login() {
     mutationFn: LoginQuery,
     onSuccess: (data) => {
       if (data.success) {
-        navigate("/inicio");
+        navigate(data?.redirigir || "/inicio_aprendiz");
       } else {
         setEsError(true);
         setMensaje(data.message || "Error desconocido al iniciar sesión.");

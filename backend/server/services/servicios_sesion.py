@@ -17,3 +17,14 @@ def obtener_usuario():
 
 def esta_sesion_guardada():
     return session.get("identificacion") is not None
+
+
+def rol_usuario():
+    usuario = obtener_usuario()
+    if usuario:
+        return usuario.get("id_rol")
+    return None
+
+
+def cerrar_sesion():
+    session.pop("identificacion", None)
