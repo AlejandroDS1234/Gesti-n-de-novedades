@@ -1,15 +1,14 @@
-from flask import Flask, jsonify
+from flask import Flask
 from flask_cors import CORS
+from server.routes import blueprints
+import os
 
 app = Flask(__name__)
+app.secret_key = os.getenv("SECRET_KEY")
 CORS(app)
 
-
-@app.route("/api/inicio", methods=["GET"])
-def hello():
-    funciona = "Esto esta funcionando"
-    return jsonify({"message": funciona})
-
+for bp in blueprints:
+    app.register_blueprint(bp)
 
 if __name__ == "__main__":
     print("Iniciando el servidor Flask...")
