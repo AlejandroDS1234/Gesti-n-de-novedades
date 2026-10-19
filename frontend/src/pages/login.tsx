@@ -2,7 +2,7 @@ import { useState, type FormEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
 import type { respuestaBackend } from "../types/types";
-import "../index.css";
+import "../css/login.css";
 
 function LoginQuery(datos: { usuario: string; contrasena: string }) {
   return fetch("/api/login", {
@@ -26,7 +26,7 @@ function Login() {
     mutationFn: LoginQuery,
     onSuccess: (data) => {
       if (data.success) {
-        navigate(data?.redirigir || "/inicio_aprendiz");
+        navigate(data?.redirigir || "/inicio");
       } else {
         setEsError(true);
         setMensaje(data.message || "Error desconocido al iniciar sesión.");

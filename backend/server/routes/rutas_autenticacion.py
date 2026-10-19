@@ -31,13 +31,8 @@ def login():
     if not datos_usuario.get("estado_user"):
         return error_response("El usuario no está activo", 401)
 
-    rutas_rol = {
-        1: "/inicio_aprendiz",
-        2: "/inicio_instructor",
-        3: "/inicio_administrador",
-    }
     guardar_sesion(usuario)
     return success_response(
         message="Usuario autenticado",
-        redirigir=rutas_rol.get(datos_usuario.get("id_rol")),
+        redirigir="/inicio",
     )

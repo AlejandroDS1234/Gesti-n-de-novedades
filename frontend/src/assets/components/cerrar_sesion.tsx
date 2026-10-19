@@ -1,5 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
+import type { ReactNode } from "react";
 
 function cerrarSesionQuery() {
   return fetch("/api/cerrar_sesion", {
@@ -7,9 +8,20 @@ function cerrarSesionQuery() {
   }).then((res) => res.json());
 }
 
-function Boton_cerrar_sesion() {
+
+interface CerrarSesionArgs {
+  cerrarSesion: () => void;
+  isPending: boolean;
+}
+
+
+interface CerrarSesionProviderProps {
+  children: (args: CerrarSesionArgs) => ReactNode;
+}
+
+function CerrarSesionProvider({ children }: CerrarSesionProviderProps) {
   const navigate = useNavigate();
-  const { mutate: cerrarSesion } = useMutation({
+  const { mutate: cerrarSesion, isPending } = useMutation({
     mutationFn: cerrarSesionQuery,
     onSuccess: (data) => {
       if (data.success) {
@@ -19,7 +31,7 @@ function Boton_cerrar_sesion() {
       }
     },
   });
-  return <button onClick={() => cerrarSesion()}>Cerrar Sesión</button>;
+  return children({ cerrarSesion, isPending });
 }
 
-export default Boton_cerrar_sesion;
+export default CerrarSesionProvider;
