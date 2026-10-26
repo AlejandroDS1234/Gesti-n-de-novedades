@@ -3,6 +3,7 @@ import RutasProtegidas from "./rutasProtegidas";
 import Index from "../pages/PageIndex";
 import Login from "../pages/login";
 import InicioPrincipal from "../pages/inicio";
+import RegistAdmin from "../pages/regist_admin";
 
 function Routes() {
     return (
@@ -12,6 +13,7 @@ function Routes() {
             <Route element={<RutasProtegidas rutaVerificar="/sesion" />}>
                 <Route path="/inicio" element={<InicioPrincipal />}/>
             </Route>
+            <Route path="/regist_admin" element={<RegistAdmin />} />
         </ReactRoutes>
     )
 }
