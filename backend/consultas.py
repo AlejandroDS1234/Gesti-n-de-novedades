@@ -17,17 +17,21 @@ def conectar():
         print("Error al conectar a la base de datos:", e)
         return None
     
-"""def regitro_usuario():
+@app.route('/regist_usuario', methods=['POST'])
+def registro_usuario():
     if request.method == 'POST':
         db = conectar()
         cursor = db.cursor()
         # datos del formulario(esta es la plantilla de los datos que habrian de insertarse, luego hay que cambiarlo por los datos de un formulario)
-        valores = (n.o_documento, tipo_documento, nombre, nombre2, apellido, apellido2, fecha_nacimiento, genero, correo, contraseña, True)
-        cursor.execute('INSERT INTO usuarios (n.o_documento, tipo_documento, nombre, nombre2, apellido, apellido2, fecha_nacimiento, genero, correo, contraseña, estado) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)')
+        datos = request.get_json()
+        valores = (datos['documento'], datos['tipoIdentificacion'], datos['nombre'], datos['nombre2'], datos['apellido'], datos['apellido2'], datos['fechanacimiento'], datos['genero'], datos['correo'], datos['contraseña'], True)
+        cursor.execute('INSERT INTO usuarios ("n.o_documento", tipo_documento, nombre, nombre2, apellido, apellido2, fecha_nacimiento, genero, correo, contraseña, estado) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)',valores)
+        db.commit()
         cursor.close()
         db.close()
+        return jsonify({'mensaje': 'Usuario registrado exitosamente'})
 
-def consultar_usuarios():
+"""def consultar_usuarios():
     if request.method == 'GET':
         db = conectar()
         cursor = db.cursor()
