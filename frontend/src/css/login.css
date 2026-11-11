@@ -100,7 +100,7 @@ button, input { /* Hace que botones e inputs usen la tipografía del elemento pa
             rgba(231,243,251,.65) 35%,
             rgba(5,45,71,.02) 65%
         ),
-        url("img/cbi-palmira.jpg") center bottom / cover no-repeat; /* Centra abajo y escala la imagen para cubrir el panel sin repetirla. */
+        url("/sena-coso.png") center bottom / cover no-repeat; /* Centra abajo y escala la imagen para cubrir el panel sin repetirla. */
 }
 
 .encabezado {
@@ -720,5 +720,85 @@ button:focus-visible {
             rgba(255, 255, 255, 0.05),
             rgba(255, 255, 255, 0.05)
         ),
-        url("sena-coso.png") center center / cover no-repeat; /* Centra y escala esta imagen para cubrir el panel sin repetirla. */
+        url("/sena-coso.png") center center / cover no-repeat; /* Centra y escala esta imagen para cubrir el panel sin repetirla. */
+}
+
+.pagina-registro {
+    display: block;
+    min-height: 100vh;
+    background: var(--blanco);
+}
+
+.panel-registro {
+    min-height: 100vh;
+    padding: clamp(1.5rem, 5vw, 4rem);
+    background:
+        linear-gradient(rgba(255, 255, 255, .88), rgba(255, 255, 255, .94)),
+        url("/sena-coso.png") center / cover no-repeat;
+}
+
+.panel-registro .encabezado {
+    width: min(100%, 56rem);
+    margin: 0 auto;
+}
+
+.panel-registro .nombre-centro h1 {
+    margin: 0 0 .5rem;
+    color: var(--azul-oscuro);
+    font-size: clamp(1.4rem, 3vw, 2rem);
+}
+
+.formulario-registro {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    width: min(100%, 56rem);
+    margin: 2rem auto 0;
+}
+
+.formulario-registro input,
+.formulario-registro select {
+    width: 100%;
+    min-width: 0;
+    min-height: 3.5rem;
+    padding: 0 1rem;
+    border: 1px solid var(--borde);
+    border-radius: .75rem;
+    background: rgba(255, 255, 255, .92);
+    color: var(--azul-oscuro);
+    font-size: 1rem;
+}
+
+.formulario-registro .boton-ingresar {
+    grid-column: 1 / -1;
+}
+
+@media (max-width: 760px) {
+    .panel-registro {
+        min-height: 100vh;
+        padding: 1.5rem 1rem;
+    }
+
+    .panel-registro .encabezado {
+        gap: .75rem;
+    }
+
+    .panel-registro .logo-superior {
+        width: 4rem;
+        height: 4rem;
+    }
+
+    .panel-registro .separador {
+        height: 3.5rem;
+    }
+
+    .formulario-registro {
+        grid-template-columns: minmax(0, 1fr);
+        gap: .75rem;
+        margin-top: 1.5rem;
+    }
+
+    .formulario-registro .boton-ingresar {
+        grid-column: auto;
+    }
 }

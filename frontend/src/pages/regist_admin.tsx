@@ -1,4 +1,5 @@
-import {useState, useEffect } from "react";
+import { useState } from "react";
+import "../css/login.css";
 
 function RegistAdmin() {
     const [documento, setDocumento] = useState("");
@@ -52,8 +53,8 @@ function RegistAdmin() {
     }
 
     return (
-        <main className="pagina">
-            <section className="panel-izquierdo">
+        <main className="pagina pagina-registro">
+            <section className="panel-izquierdo panel-registro">
                 <header className="encabezado">
                     <img src="/logo-sena.png" alt="Logo SENA" className="logo-superior" />
                     <div className="separador" />
@@ -63,7 +64,7 @@ function RegistAdmin() {
                         <p>Centro de Biotecnología Industrial</p>
                     </div>
                 </header>
-                <form onSubmit={(e) => { e.preventDefault(); enviarDatos(); }}>
+                <form className="formulario-registro" onSubmit={(e) => { e.preventDefault(); enviarDatos(); }}>
                     <input 
                         type = "number"
                         placeholder="Documento"
@@ -138,7 +139,7 @@ function RegistAdmin() {
                         onChange={(e) => setContraseña(e.target.value)}
                         required
                     />
-                    <button type="submit" className="boton-ingresar" onClick={enviarDatos}>
+                    <button type="submit" className="boton-ingresar">
                         <span>Registrar Administrador</span>
                     </button>
                 </form>

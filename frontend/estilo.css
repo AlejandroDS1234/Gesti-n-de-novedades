@@ -1,0 +1,562 @@
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,400;0,500;0,600;0,700;1,700&display=swap");
+@import "tailwindcss"; /* Carga Tailwind CSS para poder usar sus estilos y utilidades. */
+
+* {
+    box-sizing: border-box; /* Incluye padding y borde dentro del ancho y alto calculados. */
+}
+
+body {
+    overflow-x: hidden; /* Oculta el desbordamiento horizontal y evita una barra lateral. */
+}
+
+:root {
+    font-size: 65.4%;
+    --azul: #50E5F9; 
+    --azul-oscuro: #00304D; 
+    --verde: #39A900; 
+    --verde-oscuro: #007832; 
+    --morado: #71277A; 
+    --amarillo: #FDC300;
+    --blanco: #F6F6F6;
+    --negro: #000000; 
+
+    --gris: #8291a0; 
+    --borde: #d9dee6; 
+}
+
+body {
+    font-family: 'Work Sans', system-ui, sans-serif; 
+    color: var(--azul-oscuro);
+    background: var(--blanco);
+}
+
+button, input { /* Hace que botones e inputs usen la tipografía del elemento padre. */
+    font: inherit; /* Hereda familia, tamaño, grosor y estilo de fuente. */
+}
+
+/* Estilos del área para cargar una imagen y sus textos. */
+
+.campo-imagen:hover {
+    background: var(--blanco);
+    border-color: var(--azul-oscuro);
+}
+
+.campo-imagen span {
+    color: var(--verde);
+    font-size: 2.1875rem; /* Aumenta el tamaño del elemento destacado. */
+}
+
+.campo-imagen small {
+    color: var(--gris);
+}
+
+.previsualizacion {
+    text-align: center; /* Centra el contenido de la zona de previsualización. */
+}
+
+#vistaPrevia { /* Da forma y límites a la imagen seleccionada. */
+    display: block; /* Permite centrar la imagen mediante márgenes automáticos. */
+    max-width: 100%; /* Impide que la imagen exceda el ancho disponible. */
+    max-height: 37.5rem; /* Limita la altura de la previsualización. */
+    margin: 1.125rem auto 0.625rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 0.3125rem 1.25rem #07365320; /* Añade una sombra suave alrededor. */
+}
+
+#vistaPrevia[hidden],
+#quitarImagen[hidden] {
+    display: none; /* Oculta imagen y botón cuando tienen el atributo hidden. */
+}
+
+#quitarImagen { /* Estiliza el botón que elimina la imagen seleccionada. */
+    margin: 0 auto 0.625rem;
+    padding: 0.5625rem 1.125rem; /* Añade espacio interior vertical y horizontal. */
+    border: none;
+    border-radius: 0.5rem;
+    background: var(--azul-oscuro);
+    color: var(--blanco);
+    cursor: pointer; /* Muestra el cursor de interacción. */
+}
+
+
+/* ==========================================================
+   LOGIN · dos paneles (imagen del centro + tarjeta de acceso)
+   Se usan px / clamp() porque el :root tiene font-size 65.4%,
+   lo que haría que 1rem valga ~10px en esta pantalla.
+   ========================================================== */
+
+.pagina {
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: grid;
+    grid-template-columns: minmax(0, 45.4fr) minmax(0, 54.6fr);
+    font-size: 16px;
+    font-family: 'Work Sans', system-ui, sans-serif;
+    color: var(--azul-oscuro); /* inicio.css cambia el color del body (tema oscuro) */
+    background: #f4f7fa;
+}
+
+/* ---------- Panel izquierdo ---------- */
+
+.panel-izquierdo {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    padding: clamp(28px, 5.8vh, 60px) clamp(24px, 6.4%, 64px);
+    /* La foto ya trae la curva azul inferior del diseño. */
+    background:
+        linear-gradient(180deg, rgba(255,255,255,.55) 0%, rgba(255,255,255,0) 50%),
+        url("/sena-coso.png") 54% bottom / cover no-repeat;
+}
+
+.encabezado {
+    display: flex;
+    align-items: center;
+    gap: clamp(14px, 1.8vw, 24px);
+}
+
+.logo-superior {
+    width: clamp(72px, 8.5vw, 130px);
+    height: auto;
+    aspect-ratio: 148 / 135;
+    object-fit: contain;
+}
+
+.separador {
+    align-self: stretch;
+    flex: none;
+    width: 1px;
+    min-height: 48px;
+    background: var(--azul-oscuro);
+    opacity: .75;
+}
+
+.nombre-centro h2 {
+    margin: 0 0 4px;
+    font-size: clamp(22px, 2.1vw, 32px);
+    font-weight: 700;
+    line-height: 1.15;
+}
+
+.nombre-centro p {
+    margin: 0;
+    font-size: clamp(13px, 1.1vw, 17px);
+    line-height: 1.4;
+    color: var(--azul-oscuro);
+}
+
+.mensaje {
+    margin-top: clamp(28px, 7vh, 72px);
+}
+
+.mensaje h1 {
+    margin: 0;
+    font-size: clamp(34px, 3.6vw, 56px);
+    font-weight: 700;
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    color: var(--azul-oscuro);
+}
+
+.mensaje h1 span {
+    color: var(--verde);
+    font-style: italic;
+}
+
+.linea-verde {
+    width: clamp(90px, 8vw, 130px);
+    height: 5px;
+    margin-top: 18px;
+    background: var(--verde);
+    border-radius: 100%;
+    transform: rotate(-3deg);
+}
+
+/* Fila de iconos sobre la curva azul */
+.pie-izquierdo {
+    position: absolute;
+    z-index: 2;
+    left: clamp(16px, 4%, 48px);
+    bottom: clamp(20px, 4vh, 44px);
+    display: flex;
+    align-items: center;
+    color: #fff;
+}
+
+.opcion {
+    min-width: 92px;
+    padding: 0 clamp(10px, 1.4vw, 20px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    border-right: 1px solid rgba(255,255,255,.35);
+}
+
+.opcion:last-child { border-right: none; }
+
+.opcion svg {
+    width: 30px;
+    height: 30px;
+    fill: none;
+    stroke: #fff;
+    stroke-width: 1.7;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.opcion span {
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+/* ---------- Panel derecho ---------- */
+
+.panel-derecho {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: clamp(24px, 5vh, 56px) clamp(16px, 4%, 56px);
+    background: #f4f7fa;
+}
+
+.decoracion-superior {
+    position: absolute;
+    z-index: 0;
+    width: clamp(220px, 30vw, 420px);
+    aspect-ratio: 1;
+    top: calc(clamp(220px, 30vw, 420px) * -0.62);
+    right: calc(clamp(220px, 30vw, 420px) * -0.28);
+    border-radius: 50%;
+    background: var(--azul-oscuro);
+    border-left: 3px solid var(--verde);
+    transform: rotate(-38deg);
+    pointer-events: none;
+}
+
+.decoracion-inferior {
+    position: absolute;
+    z-index: 0;
+    width: clamp(180px, 24vw, 340px);
+    aspect-ratio: 1;
+    right: calc(clamp(180px, 24vw, 340px) * -0.5);
+    bottom: calc(clamp(180px, 24vw, 340px) * -0.3);
+    border: 2px solid rgba(57,169,0,.45);
+    border-radius: 50%;
+    background: rgba(57,169,0,.09);
+    pointer-events: none;
+}
+
+.tarjeta-login {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 620px;
+    padding: clamp(24px, 4.5vh, 48px) clamp(20px, 8%, 56px) clamp(20px, 3.5vh, 36px);
+    border: 1px solid #fff;
+    border-radius: 32px;
+    background: #f8fafc;
+    box-shadow: 0 20px 55px rgba(19,44,65,.10);
+}
+
+.marca-login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo-login {
+    width: clamp(84px, 13vh, 130px);
+    height: auto;
+    aspect-ratio: 148 / 135;
+    object-fit: contain;
+}
+
+.raya-logo {
+    width: 96px;
+    height: 3px;
+    margin-top: 10px;
+    border-radius: 10px;
+    background: var(--verde);
+}
+
+.titulo-login {
+    text-align: center;
+    margin: clamp(14px, 2.6vh, 26px) 0 clamp(18px, 3.4vh, 34px);
+}
+
+.titulo-login h2 {
+    margin: 0 0 clamp(6px, 1.2vh, 12px);
+    font-size: clamp(28px, 2.6vw, 42px);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+}
+
+.titulo-login p {
+    margin: 0;
+    color: var(--gris);
+    font-size: clamp(15px, 1.3vw, 19px);
+    line-height: 1.5;
+}
+
+/* ---------- Formulario ---------- */
+
+#formularioLogin {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(12px, 2.2vh, 22px);
+}
+
+.campo {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    min-height: clamp(52px, 7.5vh, 66px);
+    padding: 0 20px;
+    border: 1.5px solid var(--borde);
+    border-radius: 16px;
+    background: #f8fafc;
+    transition: border-color .2s, box-shadow .2s;
+}
+
+.campo:focus-within {
+    border-color: var(--azul-oscuro);
+    box-shadow: 0 0 0 4px rgba(0,48,77,.10);
+}
+
+.campo > svg {
+    flex: none;
+    width: 24px;
+    height: 24px;
+    fill: none;
+    stroke: var(--azul-oscuro);
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.campo input {
+    flex: 1;
+    min-width: 0;
+    width: 100%;
+    height: 100%;
+    min-height: 48px;
+    padding: 0;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: var(--azul-oscuro);
+    font-size: 17px; /* ≥16px evita el zoom automático en iOS */
+}
+
+.campo input::placeholder { color: var(--gris); opacity: 1; }
+
+.boton-ojo {
+    flex: none;
+    width: 32px;
+    height: 32px;
+    display: grid;
+    place-items: center;
+    padding: 4px;
+    border: none;
+    border-radius: 8px;
+    color: var(--azul-oscuro);
+    background: transparent;
+    cursor: pointer;
+}
+
+.boton-ojo svg {
+    width: 100%;
+    height: 100%;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.boton-ingresar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+    min-height: clamp(52px, 7.5vh, 66px);
+    border: none;
+    border-radius: 16px;
+    color: #fff;
+    background: var(--azul-oscuro);
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 8px 16px rgba(0,48,77,.18);
+    transition: background .2s, transform .2s;
+}
+
+.boton-ingresar:hover { background: var(--verde-oscuro); transform: translateY(-2px); }
+.boton-ingresar:active { transform: translateY(0); }
+
+.boton-ingresar svg {
+    width: 26px;
+    height: 22px;
+    fill: none;
+    stroke: #fff;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+button:focus-visible {
+    outline: 3px solid var(--azul-oscuro);
+    outline-offset: 3px;
+}
+
+.mensaje-estado {
+    display: none;
+    margin: -4px 0 0;
+    text-align: center;
+    color: var(--gris);
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+.mensaje-estado.visible { display: block; }
+.mensaje-estado.error { color: #a52d2d; }
+
+.acceso-restringido {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: clamp(14px, 2.6vh, 26px);
+    color: var(--gris);
+    font-size: 14px;
+}
+
+.acceso-restringido svg {
+    width: 18px;
+    height: 18px;
+    fill: var(--azul-oscuro);
+    stroke: var(--azul-oscuro);
+    stroke-width: 1.4;
+}
+
+/* ---------- Pie de la tarjeta ---------- */
+
+.pie-tarjeta {
+    margin-top: clamp(16px, 4vh, 44px);
+    text-align: center;
+}
+
+.linea-final {
+    position: relative;
+    height: 2px;
+    margin-bottom: clamp(12px, 2.4vh, 24px);
+    background: var(--borde);
+}
+
+.linea-final span {
+    position: absolute;
+    top: -1px;
+    left: calc(50% - 27px);
+    width: 54px;
+    height: 4px;
+    border-radius: 10px;
+    background: var(--verde);
+}
+
+.pie-tarjeta h3 {
+    margin: 0 0 6px;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.pie-tarjeta h3 b { padding: 0 5px; color: var(--verde); }
+
+.pie-tarjeta p {
+    margin: 0;
+    color: var(--gris);
+    font-size: 14px;
+}
+
+/* ==========================================================
+   RESPONSIVE
+   ========================================================== */
+
+/* Tablet horizontal / laptop pequeño */
+@media (max-width: 1100px) {
+    .pagina { grid-template-columns: minmax(0, 42fr) minmax(0, 58fr); }
+    .panel-izquierdo { padding: 28px 5%; }
+    .opcion { min-width: 80px; }
+    .tarjeta-login { padding-left: 6%; padding-right: 6%; }
+}
+
+/* Tablet vertical y móvil: una sola columna (banner arriba, formulario abajo) */
+@media (max-width: 900px) {
+    .pagina { grid-template-columns: 1fr; }
+
+    .panel-izquierdo {
+        min-height: 360px;
+        padding: 24px max(20px, 6%) 84px;
+        background:
+            linear-gradient(90deg, rgba(255,255,255,.8) 0%, rgba(255,255,255,.35) 55%, rgba(255,255,255,0) 85%),
+            url("/sena-coso.png") 72% 0 / auto 140% no-repeat; /* sube la foto para que la curva azul quede tras la tarjeta */
+    }
+
+    .mensaje { margin-top: 24px; }
+    .mensaje h1 { font-size: clamp(30px, 7vw, 44px); }
+    .nombre-centro h2 { font-size: clamp(20px, 4.4vw, 28px); }
+    .nombre-centro p { font-size: clamp(12px, 2.6vw, 15px); }
+    .logo-superior { width: clamp(64px, 14vw, 96px); }
+    .pie-izquierdo { display: none; }
+
+    /* La tarjeta "sube" sobre el banner */
+    .panel-derecho {
+        align-items: flex-start;
+        padding: 0 16px 32px;
+        margin-top: -48px;
+        background: transparent;
+    }
+    .pagina { background: #f4f7fa; }
+    .tarjeta-login { max-width: 560px; border-radius: 28px; }
+    .decoracion-superior { display: none; }
+}
+
+/* Móvil */
+@media (max-width: 520px) {
+    .panel-izquierdo { min-height: 300px; padding-bottom: 64px; }
+    .encabezado { gap: 12px; }
+    .nombre-centro p { max-width: 190px; }
+
+    .tarjeta-login {
+        padding: 28px 18px 22px;
+        border-radius: 24px;
+    }
+    .campo { gap: 12px; padding: 0 14px; border-radius: 14px; }
+    .boton-ingresar { border-radius: 14px; font-size: 17px; }
+    .titulo-login p br { display: none; } /* deja que el texto fluya */
+    .pie-tarjeta { margin-top: 28px; }
+}
+
+/* Pantallas muy angostas */
+@media (max-width: 360px) {
+    .panel-derecho { padding-left: 10px; padding-right: 10px; }
+    .tarjeta-login { padding-left: 14px; padding-right: 14px; }
+    .campo > svg { width: 22px; height: 22px; }
+}
+
+/* Escritorio con poca altura (portátiles / móvil horizontal): compacta la tarjeta */
+@media (min-width: 901px) and (max-height: 700px) {
+    .logo-login { width: 72px; }
+    .raya-logo { margin-top: 6px; }
+    .titulo-login p br { display: none; }
+    .acceso-restringido { margin-top: 12px; }
+    .pie-tarjeta { margin-top: 14px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { transition: none !important; }
+}
