@@ -1,5 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap');
 
+/* elimina la barra de al lado para desplazarse*/
+
+html, body {
+  overflow-x: hidden;
+  scrollbar-width: none;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
+}
+
 /* Modo oscuro (por defecto) */
 :root {
   color-scheme: dark;

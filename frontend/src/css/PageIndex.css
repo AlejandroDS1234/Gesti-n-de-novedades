@@ -1,0 +1,525 @@
+
+/* elimina la barra de al lado para desplazarse*/
+
+html, body {
+  overflow-x: hidden;
+  scrollbar-width: none;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
+}
+
+:root {
+  font-size: 62.5%;
+
+  --azul: #50E5F9;
+  --azul-oscuro: #00304D;
+  --verde: #39A900;
+  --verde-oscuro: #007832;
+  --morado: #71277A;
+  --amarillo: #FDC300;
+  --blanco: #F6F6F6;
+  --negro: #000000;
+  --gris: #8291a0;
+  --borde: #d9dee6;
+}
+
+
+/* CONFIGURACIÓN GENERAL */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Work Sans', 'Extralight';
+}
+
+.home {
+  min-height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--blanco);
+}
+
+/* NAVBAR ----------------------------------------------------------------*/
+
+.navbar-home {
+  min-height: 75px;
+  width: 100%;
+  padding: 12px 5%;
+  background: var(--azul-oscuro);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  position: relative;
+  z-index: 5;
+}
+
+.marca-sena {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--blanco);
+}
+
+.marca-sena img {
+  width: 43px;
+  object-fit: contain; /* imagen del logo completa */
+}
+
+.marca-sena h2 {
+  font-size: 16px;
+}
+
+.marca-sena p {
+  font-size: 11px;
+  color: var(--blanco);
+  margin-top: 4px;
+}
+
+.enlaces-navbar {
+  display: flex;
+  align-items: center;
+  gap: 30px; /* espacio entre los enlaces*/
+}
+
+.enlaces-navbar a {
+  color: var(--blanco);
+  font-size: 14px;
+  text-decoration: none;
+  transition: color .3s ease;
+}
+
+.enlaces-navbar a:hover {
+  color: var(--verde);
+}
+
+
+
+/* CONTENIDO PRINCIPAL ---------------------------------------------------------------------*/
+
+.contenido-home {
+  min-height: calc(100vh - 135px);
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, .6fr); /* espacio de las columnas*/
+}
+
+/* VIDEO */
+
+.video-home {
+  position: relative;
+  min-height: clamp(380px, 65vh, 620px);
+  overflow: hidden;
+  background: var(--blanco);
+  margin: 9px;
+}
+
+.video-home video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* el video completo */
+}
+
+.video-home::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    0deg,
+    rgba(0, 25, 40, .65),
+    rgba(0, 48, 77, .02)
+  );
+}
+
+/* BOTÓN DE SONIDO */
+
+.video-home button {
+  position: absolute;
+  right: 18px;
+  bottom: 18px;
+  z-index: 3;
+  padding: 10px 16px;
+  background: var(--blanco);
+  color: var(--negro);
+  border: none;
+  border-radius: 80px; /* borde del botón - redondo*/
+  font-size: 12px;
+  cursor: pointer;
+  transition: background .3s ease;
+}
+
+.video-home button:hover {
+  background: var(--borde);
+}
+
+/* TEXTO SOBRE EL VIDEO */
+
+.texto-video-home {
+  position: absolute;
+  z-index: 2;
+  bottom: 10%;
+  left: 7%;
+  right: 7%;
+  color: white;
+}
+
+.texto-video-home span {
+  color: var(--verde);
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.texto-video-home h1 {
+  font-size: clamp(28px, 3.5vw, 46px);
+  line-height: 1.15;
+  margin: 12px 0;
+  max-width: 500px;
+}
+
+.texto-video-home p {
+  font-size: 13px;
+  color: #E5ECEF;
+}
+
+
+/* PANEL DERECHO --------------------------------------------------*/
+
+.acceso-home {
+  background: #F6F6F6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 34px 7%;
+  text-align: center;
+}
+
+.contenido-acceso {
+  width: 100%;
+  max-width: 350px;
+  padding: 10px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* LOGO */
+
+.logo-acceso {
+  width: 75px;
+  height: auto;
+  object-fit: contain;
+  margin-bottom: 25px;
+}
+
+/* ETIQUETA INSTITUCIONAL */
+
+.etiqueta-home {
+  display: block;
+  color: #007832;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  margin-bottom: 15px;
+}
+
+/* TÍTULO */
+
+.contenido-acceso h1 {
+  color: var(--azul-oscuro);
+  font-family: Georgia, serif;
+  font-size: clamp(30px, 3vw, 38px);
+  line-height: 1.2;
+  font-weight: 400;
+  margin-bottom: 12px;
+}
+
+.contenido-acceso h1 span {
+  color: #325063;
+}
+
+/* LÍNEA DECORATIVA */
+
+.linea-home {
+  width: 55px;
+  height: 3px;
+  border-radius: 5px;
+  background: #39A900;
+  margin: 17px auto;
+}
+
+/* BIENVENIDA */
+
+.contenido-acceso > span:not(.etiqueta-home) {
+  color: #007832;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1.8px;
+}
+
+/* DESCRIPCIÓN */
+
+.contenido-acceso h4 {
+  color: #73879A;
+  font-family: Georgia, serif;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.6;
+  margin: 10px 0;
+}
+
+.contenido-acceso > p {
+  color: #73879A;
+  font-family: Georgia, serif;
+  font-size: 12px;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+/* ENLACE LOGIN */
+
+.contenido-acceso > ol {
+  list-style: none;
+  padding: 0;
+  margin: 5px 0 14px;
+  width: 100%;
+  min-height: 46px;
+  border-radius: 12px;
+  background: #00304D;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 10px rgba(0, 48, 77, 0.15);
+  transition: 0.3s ease;
+}
+
+.contenido-acceso > ol:hover {
+  background: #007832;
+  transform: translateY(-2px);
+}
+
+.contenido-acceso > ol > a {
+  color: #F6F6F6;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 12px;
+}
+
+/* NOTA DE SEGURIDAD */
+
+.nota-home {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 5px;
+  color: #73879A;
+  font-family: Georgia, serif;
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+/* PIE DEL PANEL */
+
+.footer-home {
+  width: 100%;
+  margin-top: 40px;
+  color: #9AA9B5;
+  font-family: Georgia, serif;
+  font-size: 10px;
+}
+
+.linea-footer {
+  width: 100%;
+  height: 1px;
+  background: #D5DDE4;
+  position: relative;
+  margin-bottom: 18px;
+}
+
+.linea-footer::before {
+  content: "";
+  position: absolute;
+  width: 35px;
+  height: 3px;
+  background: #39A900;
+  border-radius: 5px;
+  top: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+
+/* FOOTER ----------------------------------------------------------*/
+
+.footer-home {
+  min-height: 60px;
+  background: var(--azul-oscuro);
+  color: white;
+  padding: 13px 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  font-size: 11px;
+}
+
+/* responsive ----------------------------------- */
+
+@media (max-width: 900px) {
+
+  /* NAVBAR */
+  .navbar-home {
+    min-height: auto;
+    padding: 15px 4%;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .enlaces-navbar {
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  /* CONTENIDO */
+  .contenido-home {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  /* VIDEO */
+  .video-home {
+    min-height: clamp(280px, 55vw, 450px);
+    margin: 7px;
+  }
+
+  /* PANEL DE ACCESO */
+  .acceso-home {
+    min-height: auto;
+    padding: 40px 8%;
+  }
+
+  .contenido-acceso {
+    max-width: 420px;
+  }
+
+  /* FOOTER */
+  .footer-home {
+    padding: 15px 4%;
+  }
+}
+
+
+/* CELULARES */
+@media (max-width: 550px) {
+
+  /* NAVBAR */
+  .navbar-home {
+    padding: 13px 4%;
+    gap: 12px;
+  }
+
+  .marca-sena {
+    gap: 9px;
+  }
+
+  .marca-sena img {
+    width: 36px;
+  }
+
+  .marca-sena h2 {
+    font-size: 13px;
+  }
+
+  .marca-sena p {
+    font-size: 9px;
+  }
+
+  .enlaces-navbar {
+    width: 100%;
+    gap: 10px;
+    justify-content: center;
+  }
+
+  .enlaces-navbar a {
+    font-size: 10px;
+    text-align: center;
+  }
+
+  /* VIDEO */
+  .video-home {
+    min-height: 250px;
+    margin: 5px;
+  }
+
+  .video-home button {
+    right: 10px;
+    bottom: 10px;
+    padding: 8px 12px;
+    font-size: 10px;
+  }
+
+  .texto-video-home {
+    bottom: 8%;
+    left: 6%;
+    right: 6%;
+  }
+
+  .texto-video-home h1 {
+    font-size: clamp(23px, 6vw, 30px);
+  }
+
+  .texto-video-home p {
+    font-size: 11px;
+  }
+
+  /* PANEL DE ACCESO */
+  .acceso-home {
+    padding: 30px 8%;
+  }
+
+  .contenido-acceso {
+    max-width: 100%;
+  }
+
+  .logo-acceso {
+    width: 48px;
+    margin-bottom: 15px;
+  }
+
+  .etiqueta-home {
+    font-size: 9px;
+    margin-bottom: 10px;
+  }
+
+  .contenido-acceso h1 {
+    font-size: 29px;
+  }
+
+  .linea-home {
+    margin: 14px 0;
+  }
+
+  .contenido-acceso h4 {
+    font-size: 12px;
+  }
+
+  .contenido-acceso > p {
+    font-size: 11px;
+    margin-bottom: 16px;
+  }
+
+  .boton-home {
+    min-height: 43px;
+    font-size: 12px;
+  }
+} 
