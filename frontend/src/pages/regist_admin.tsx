@@ -12,6 +12,7 @@ function RegistAdmin() {
     const [genero, setGenero] = useState("");
     const [correo, setCorreo] = useState("");
     const [contraseña, setContraseña] = useState("");
+    const [area, setArea] = useState("");
     const estado = true
 
     async function enviarDatos() {
@@ -26,11 +27,12 @@ function RegistAdmin() {
             genero : genero,
             correo : correo,
             contraseña : contraseña,
+            area : area,
             estado : estado
         };
         try {
             //envio de los datos al backend
-            const respuesta = await fetch("http://localhost:5000/regist_admin", {
+            const respuesta = await fetch("http://localhost:8200/regist_admin", {
                 method: "POST",
                 // se indica que el archivo es un json
                 headers: {
@@ -139,6 +141,13 @@ function RegistAdmin() {
                         onChange={(e) => setContraseña(e.target.value)}
                         required
                     />
+                    <select
+                        value={area}
+                        onChange={(e) => setArea(e.target.value)}
+                        required>
+                            <option value="">Seleccione Área...</option>
+                            <option value="1">sistemas</option>
+                    </select>
                     <button type="submit" className="boton-ingresar">
                         <span>Registrar Administrador</span>
                     </button>
