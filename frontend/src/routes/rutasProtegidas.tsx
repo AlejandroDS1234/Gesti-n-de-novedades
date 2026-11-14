@@ -24,7 +24,10 @@ function RutasProtegidas({ rutaVerificar }: { rutaVerificar: string }) {
     if (isError) {
         return <div>Error al cargar los datos</div>
     }
-    return data?.success ? <Outlet /> : <Navigate to={data?.redirigir || "/login"} />
+    return data?.success ? <Outlet /> : <Navigate
+     to={data?.redirigir || "/login"}   
+     replace 
+     state={data ? { mensaje: data.message, respuesta: data } : undefined}  />
 }
 
 export default RutasProtegidas

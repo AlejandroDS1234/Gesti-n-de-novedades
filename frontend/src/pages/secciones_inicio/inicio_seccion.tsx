@@ -8,13 +8,13 @@ const mensajes = [
   "Tu centro te mantiene informado.",
 ];
 
-export default function Inicio({ stats, novedades, cambiarPagina }) {
+export default function Inicio() {
   const [slide, setSlide] = useState(0);
   const tarjetas = [
-    { icono: "▤", numero: stats.total, texto: "Novedades registradas" },
-    { icono: "✔", numero: stats.enProceso, texto: "En proceso" },
-    { icono: "◉", numero: stats.respondidas, texto: "Respondidas" },
-    { icono: "▣", numero: stats.vencidas, texto: "Vencidas" },
+    { icono: "▤", numero: 0, texto: "Novedades registradas" },
+    { icono: "✔", numero: 0, texto: "En proceso" },
+    { icono: "◉", numero: 0, texto: "Respondidas" },
+    { icono: "▣", numero: 0, texto: "Vencidas" },
   ];
 
   return (
@@ -43,16 +43,16 @@ export default function Inicio({ stats, novedades, cambiarPagina }) {
           <h3>¿Qué puedes hacer aquí?</h3>
           <p>Registra novedades, consulta tu estado y mantente al tanto de las notificaciones de tu centro.</p>
         </div>
-        <button className="help-arrow" onClick={() => cambiarPagina("Novedades")} aria-label="Registrar novedad">→</button>
+        <button className="help-arrow"  aria-label="Registrar novedad">→</button> {/*onClick={() => cambiarPagina("Novedades")}*/}
       </section>
 
       <section className="home-grid">
         <article className="panel">
           <div className="panel-head">
             <h3><span className="panel-icon">▤</span> Últimas novedades</h3>
-            <button className="link-btn" onClick={() => cambiarPagina("Mis reportes")}>Ver todas →</button>
+            <button className="link-btn" >Ver todas →</button> {/*onClick={() => cambiarPagina("Mis reportes")}*/}
           </div>
-          {novedades.length === 0 ? (
+          {/* {novedades.length === 0 ? (
             <div className="empty-state">
               <h4>Aún no hay novedades</h4>
               <p>Registra tu primera novedad y aparecerá aquí.</p>
@@ -76,7 +76,7 @@ export default function Inicio({ stats, novedades, cambiarPagina }) {
                 </tbody>
               </table>
             </div>
-          )}
+          )} */}
         </article>
 
         <aside className="promo">

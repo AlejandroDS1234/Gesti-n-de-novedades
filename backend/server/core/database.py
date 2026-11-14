@@ -19,7 +19,11 @@ def ejecutar_comando(comando: str, parametros: tuple = ()):
             conexion.commit()
 
 
-def ejecutar_consulta(comando: str, parametros: tuple = (), cantidad: str = "all"):
+def ejecutar_consulta(
+    comando: str,
+    parametros: tuple = (),
+    cantidad: str = "all",
+):
     with conectar() as conexion:
         with conexion.cursor(
             cursor_factory=psycopg2.extras.RealDictCursor,

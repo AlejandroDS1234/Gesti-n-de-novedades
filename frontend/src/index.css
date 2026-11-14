@@ -1,0 +1,16 @@
+@import "tailwindcss";
+
+:root {
+    font-size: 65.4%;
+    --azul: #50E5F9; 
+    --azul-oscuro: #00304D; 
+    --verde: #39A900; 
+    --verde-oscuro: #007832; 
+    --morado: #71277A; 
+    --amarillo: #FDC300;
+    --blanco: #F6F6F6;
+    --negro: #000000; 
+
+    --gris: #8291a0; 
+    --borde: #d9dee6; 
+}

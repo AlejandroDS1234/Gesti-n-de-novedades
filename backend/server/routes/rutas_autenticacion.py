@@ -17,8 +17,9 @@ def login():
         return error_response("Usuario y contraseña son requeridos", 400)
 
     datos_usuario = ejecutar_consulta(
-        """SELECT contrasena_user, estado_user, id_rol
-        FROM usuarios
+        """SELECT u.contrasena_user, u.estado_user, u.id_rol, r.nombre_rol
+        FROM usuarios u
+        JOIN roles r ON r.id_rol = u.id_rol
         WHERE identi_user = %s""",
         (usuario,),
         cantidad="one",
@@ -34,5 +35,5 @@ def login():
     guardar_sesion(usuario)
     return success_response(
         message="Usuario autenticado",
-        redirigir="/inicio",
+        redirigir=f"/{datos_usuario.get("nombre_rol").lower()}/inicio",
     )

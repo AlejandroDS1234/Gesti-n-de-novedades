@@ -9,7 +9,9 @@ def guardar_sesion(identificacion: str):
 def obtener_usuario():
     identificacion = session.get("identificacion")
     return ejecutar_consulta(
-        "SELECT * FROM usuarios WHERE identi_user = %s",
+        """SELECT u.*, r.nombre_rol FROM usuarios u
+            JOIN roles r ON r.id_rol = u.id_rol
+            WHERE u.identi_user = %s""",
         (identificacion,),
         cantidad="one",
     )

@@ -29,12 +29,14 @@ def sesion():
             "correo_user",
             "estado_user",
             "id_rol",
+            "nombre_rol",
         ]
         for dt in datos_solicitados
     )
     if verificar_datos_validos:
         return error_response("Solicitud inválida", 400)
     usuario_filtrado = {dt: usuario[dt] for dt in datos_solicitados}
+    print("usuario filtrado", usuario_filtrado, "datos solicitados", datos_solicitados)
     return success_response(usuario_filtrado, 200)
 
 

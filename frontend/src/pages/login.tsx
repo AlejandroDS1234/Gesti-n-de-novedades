@@ -1,8 +1,8 @@
 import { useState, type FormEvent } from "react";
-import { useNavigate } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
 import type { respuestaBackend } from "../types/types";
 import "../css/login.css";
+import { useRedirigir } from "../funciones generales";
 
 function LoginQuery(datos: { usuario: string; contrasena: string }) {
   return fetch("/api/login", {
@@ -21,12 +21,13 @@ function Login() {
   const [mostrarContrasena, setMostrarContrasena] = useState(false);
   const [mensaje, setMensaje] = useState("");
   const [esError, setEsError] = useState(false);
-  const navigate = useNavigate();
+  const redirigir = useRedirigir()
   const { mutate } = useMutation({
     mutationFn: LoginQuery,
     onSuccess: (data) => {
       if (data.success) {
-        navigate(data?.redirigir || "/inicio");
+        setEsError(false);
+        redirigir(data);
       } else {
         setEsError(true);
         setMensaje(data.message || "Error desconocido al iniciar sesión.");
@@ -47,7 +48,7 @@ function Login() {
       setEsError(true);
       setMensaje("Por favor, completa el usuario y la contraseña.");
       return;
-    }
+    } 
     mutate({ usuario: usuario.trim(), contrasena: contrasena });
   }
 
